@@ -20,6 +20,8 @@ It boasts the following features:
 
 ## Prerequisites
 
+TODO
+
 ## Configuration
 
 ### Setup Your Watchlist
@@ -69,6 +71,10 @@ $ gem install torrential_downpour
 $ torrential_downpour start
 $ torrential_downpour stop
 ```
+
+## Usage
+
+TODO
 
 ## TODO
 
