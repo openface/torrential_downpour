@@ -24,7 +24,7 @@ It boasts the following features:
 
 ### Setup Your Watchlist
 
-Edit ```~/.torwatch/watchlist.yml```
+Edit ```~/.torrential_downpour/watchlist.yml```
 
 ``` yaml
 -
@@ -33,7 +33,7 @@ Edit ```~/.torwatch/watchlist.yml```
     only_newer: true
 ```
 
-Edit ```~/.torwatch/config.yaml```
+Edit ```~/.torrential_downpour/config.yaml```
 ``` yaml
 transmission_api_client:
     #username: username
@@ -46,8 +46,8 @@ transmission_api_client:
 
 ``` sh
 $ sudo gem install torrential_downpour
-$ githubwatcher start
-$ githubwatcher stop
+$ torrential_downpour start
+$ torrential_downpour stop
 ```
 
 ## TODO
@@ -58,4 +58,4 @@ $ githubwatcher stop
 
 ## Author
 
-Written by Jason Hines, <jason@devtwo.com>
+Written by Jason Hines, DevTwo
