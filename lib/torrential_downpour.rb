@@ -49,6 +49,10 @@ module TorrentialDownpour
 
     puts "Requesting #{@wanted.size} torrent files"
     puts @wanted.map(&:title)
+
+    puts "Dry-run mode enabled.  Nothing else to do!" and return if ENV['DRYRUN']
+
+
   end
 
   # Searches torrents by given search term
@@ -83,11 +87,11 @@ module TorrentialDownpour
       raise "Error parsing regular expression for term: #{item['term']}.  Pattern must contain a named capture 'episode'"
     end
 
-    puts "Got results..."
-    groups.each do |e,t|
-      puts "-> #{e}:"
-      t.each { |t| puts "---> #{t.title} (#{t.seeders} seeders)" }
-    end
+    #puts "Got results..."
+    #groups.each do |e,t|
+    #  puts "-> #{e}:"
+    #  t.each { |t| puts "---> #{t.title} (#{t.seeders} seeders)" }
+    #end
 
     # Sort by highest number of seeders
     sorted = {}

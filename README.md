@@ -14,26 +14,21 @@ It boasts the following features:
 
 * Uses YAML files for configuration, no database or UI necessary 
 * Runs as a background daemon, so you can fire and forget it
+* Groups results by episode, which are defined in configuration
+* Automatically selects the most seeded torrent from the grouping
 * Only download torrents NEWER than what you're already tracking
 * Skips downloading torrents that you're already tracking
 * Set a maximum limit of torrents to download, per title
 
-
-## Prerequisites
-
-TODO
-
-
 ## Configuration Files
 
-Your watchlist is stored in a YAML file located at
-```~/.torrential_downpour/watchlist.yml```.  It supports the following
-properties:
+The watchlist is stored in a YAML file located at ```~/.torrential_downpour/watchlist.yml```.  
+It supports the following properties:
 
 * term - Search term used to find torrents for this grouping.
 * pattern - Regular expression used to match search results. Must contain an
-```?<episode>``` named capture.  This is used to group multiple torrents
-of the same episode.
+```?<episode>``` named capture.  This is used to group multiple torrent
+files of the same episode.
 * only_newer - optional, default is true.
 * fetch_limit - optional, default is 5.
 
@@ -51,7 +46,8 @@ Example watchlist.yml:
 ```
 
 Other configuration is located at ```~/.torrential_downpour/config.yaml```.
-This file contains Tranmission connection details.
+This file contains Transmission API connection details.  This is used to
+add the new torrents to your BitTorrent client.
 
 Example config.yml:
 ``` yaml
@@ -61,6 +57,8 @@ transmission_api_client:
     url: http://127.0.0.1:9091/transmission/rpc
 ```
 
+This Transmission API obviously must be accessible when running this
+program.
 
 ## Installation
 
@@ -68,34 +66,39 @@ To install this package as a gem, simply use:
 
 ``` sh
 $ gem install torrential_downpour
-$ torrential_downpour start
-$ torrential_downpour stop
 ```
 
-You'll then need to put the 2 configuration files in their expected
-locations:
-
-``` sh
-$ cp /path/gems/torrential_downpour/watchlist.sample.yml ~/.torrential_downpour/watchlist.yml
-$ cp /path/gems/torrential_downpour/config.sample.yml ~/.torrential_downpour/config.yml
-```
+You'll then need the 2 configuration files in their expected locations.  You
+can either copy the examples provided in this gem, or simply create new ones
+based on the examples described above.
 
 
 ## Usage
 
-Torrential Downpour is intended to run in the background.  Use the `stop`
-and `start` arguments to control the daemon.
+Torrential Downpour is intended to run in the background.  It uses 
+[foreverb](https://github.com/DAddYE/foreverb) to demonize the process.
+Use the `stop` and `start` commands to control the daemon.
 
 ``` sh
 $ torrential_downpour start
-[torrential_downpour] Pid not found, process seems doesn't exist!
-[torrential_downpour] Process daemonized with pid 11693 with thread and Forever v.0.3.3
+$ torrential_downpour stop
 ```
 
+#### Testing / Dry-Runs
+
+You are able to skip actual downloading/tracking of torrents by providing
+the `DRYRUN` environment variable.  When this environment variable is set,
+this program essentially runs in read-only mode.  This is useful if you are 
+testing the patten matching of the search results to ensure it's returning
+only the results you're expecting.
+
+``` sh
+$ DRYRUN=1 torrential_downpour start
+```
 
 ## TODO
 
-- Package this as a gem; use post hook to install example config files
+- Package this as a gem
 - Generalize the torrent search so it searches multiple sources (other than TPB)
 - Improve scheduling options; perhaps each show on it's own schedule
 
