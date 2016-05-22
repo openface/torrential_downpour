@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+$:.unshift File.expand_path('../../lib', __FILE__)
+require 'rubygems' unless defined?(Gem)
+require 'forever'
+require 'torrential_downpour'
+
+
+unless File.exists?(TorrentialDownpour.const_get(:WATCHLIST))
+	abort "Missing required watchlist file: #{TorrentialDownpour.const_get(:WATCHLIST)}"
+end
+unless File.exists?(TorrentialDownpour.const_get(:CONFIG))
+	abort "Missing require configuration file: #{TorrentialDownpour.const_get(:CONFIG)}"
+end
+
+Forever.run do
+	dir File.expand_path("~/.torrential_downpour")
+
+	before :all do
+		TorrentialDownpour.setup
+	end
+
+	every 1.day, :last => Time.now do
+		TorrentialDownpour.start
+	end
+
+	on_error do |e|
+		puts "ERROR: #{e.message}"
+	end
+
+  	on_exit do
+	    puts "Quitting..."
+	end
+end

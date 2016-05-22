@@ -1,0 +1,9 @@
+-
+    term: Silicon Valley
+    pattern: !ruby/regexp '/Silicon.Valley.(?<episode>S\d\dE\d\d)/'
+    only_newer: true
+-
+    term: Homeland
+    pattern: !ruby/regexp '/Homeland.(?<episode>S\d\dE\d\d)/'
+    only_newer: true
+    fetch_limit: 3

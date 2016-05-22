@@ -1,0 +1,7 @@
+transmission_api_client:
+    #username: username
+    #password: password
+    url: http://127.0.0.1:9091/transmission/rpc
+email_settings:
+    to: jason@devtwo.com
+    from: torrpour@nodomain.com
