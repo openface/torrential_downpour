@@ -18,13 +18,13 @@ It boasts the following features:
 * Skips downloading torrents that you're already tracking
 * Set a maximum limit of torrents to download, per title
 
+
 ## Prerequisites
 
 TODO
 
-## Configuration
 
-### Setup Your Watchlist
+## Configuration Files
 
 Your watchlist is stored in a YAML file located at
 ```~/.torrential_downpour/watchlist.yml```.  It supports the following
@@ -72,15 +72,33 @@ $ torrential_downpour start
 $ torrential_downpour stop
 ```
 
+You'll then need to put the 2 configuration files in their expected
+locations:
+
+``` sh
+$ cp /path/gems/torrential_downpour/watchlist.sample.yml ~/.torrential_downpour/watchlist.yml
+$ cp /path/gems/torrential_downpour/config.sample.yml ~/.torrential_downpour/config.yml
+```
+
+
 ## Usage
 
-TODO
+Torrential Downpour is intended to run in the background.  Use the `stop`
+and `start` arguments to control the daemon.
+
+``` sh
+$ torrential_downpour start
+[torrential_downpour] Pid not found, process seems doesn't exist!
+[torrential_downpour] Process daemonized with pid 11693 with thread and Forever v.0.3.3
+```
+
 
 ## TODO
 
-- Package this as a gem
+- Package this as a gem; use post hook to install example config files
 - Generalize the torrent search so it searches multiple sources (other than TPB)
 - Improve scheduling options; perhaps each show on it's own schedule
+
 
 ## Credits
 
