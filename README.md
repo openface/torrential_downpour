@@ -22,12 +22,12 @@ It boasts the following features:
 
 ## Configuration
 
-The watchlist is stored in a YAML file located at ```~/.torrential_downpour/watchlist.yml```.  
+The watchlist is stored in a YAML file located at `~/.torrential_downpour/watchlist.yml`.
 It supports the following properties:
 
 * term - Search term used to find torrents for this grouping.
 * pattern - Regular expression used to match search results. Must contain an
-```?<episode>``` named capture.  This is used to group multiple torrent
+`?<episode>` named capture.  This is used to group multiple torrent
 files of the same episode.
 * only_newer - optional, default is true.
 * fetch_limit - optional, default is 5.
@@ -45,7 +45,7 @@ Example watchlist.yml:
     fetch_limit: 3
 ```
 
-Other configuration is located at ```~/.torrential_downpour/config.yaml```.
+Other configuration is located at `~/.torrential_downpour/config.yaml`.
 This file contains Transmission API connection details.  This is used to
 add the new torrents to your BitTorrent client.
 
@@ -83,6 +83,8 @@ Use the `stop` and `start` commands to control the daemon.
 $ torrential_downpour start
 $ torrential_downpour stop
 ```
+
+Corresponding logs are located at `~/.torrential_downpour/logs/torrential_downpour.log`.
 
 #### Testing / Dry-Runs
 
