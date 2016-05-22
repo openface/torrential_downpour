@@ -1,4 +1,4 @@
-## Torrential Downpour
+# Torrential Downpour
 
 Torrential Downpour is a simple integration tool which automates the
 scheduling, tracking, and alerting of new torrents.  This is especially
@@ -20,7 +20,7 @@ It boasts the following features:
 * Skips downloading torrents that you're already tracking
 * Set a maximum limit of torrents to download, per title
 
-## Configuration Files
+## Configuration
 
 The watchlist is stored in a YAML file located at ```~/.torrential_downpour/watchlist.yml```.  
 It supports the following properties:
