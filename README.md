@@ -37,12 +37,12 @@ files of the same episode.
 Example watchlist.yml:
 ``` yaml
 -
-    term: Silicon Valley
-    pattern: !ruby/regexp '/Silicon.Valley.(?<episode>S\d\dE\d\d)/'
+    term: Some Title
+    pattern: !ruby/regexp '/Some.Title.(?<episode>S\d\dE\d\d)/'
     only_newer: true
 -
-    term: Homeland
-    pattern: !ruby/regexp '/Homeland.(?<episode>S\d\dE\d\d)/'
+    term: Another Title
+    pattern: !ruby/regexp '/Another.Title.(?<episode>S\d\dE\d\d)/'
     only_newer: true
     fetch_limit: 3
 ```

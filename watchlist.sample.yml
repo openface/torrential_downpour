@@ -3,7 +3,7 @@
     pattern: !ruby/regexp '/Some.Title.(?<episode>S\d\dE\d\d)/'
     only_newer: true
 -
-    term: AnotherTitle
+    term: Another Title
     pattern: !ruby/regexp '/Another.Title.(?<episode>S\d\dE\d\d)/'
     only_newer: true
     fetch_limit: 3
