@@ -1,5 +1,7 @@
 # Torrential Downpour
 
+**Disclaimer: This is very new code with very limited testing.**
+
 Torrential Downpour is a simple integration tool which automates the
 scheduling, tracking, and alerting of new torrents.  This is especially
 useful for keeping up with specific television shows.  Torrential Downpour
@@ -104,6 +106,7 @@ $ DRYRUN=1 torrential_downpour start
 - Package this as a gem
 - Generalize the torrent search so it searches multiple sources (other than TPB)
 - Improve scheduling options; perhaps each show on it's own schedule
+- Add alerting capabilities
 
 
 ## Credits
