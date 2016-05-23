@@ -48,11 +48,14 @@ module TorrentialDownpour
     end
 
     puts "Requesting #{@wanted.size} torrent files"
-    puts @wanted.map(&:title)
+    puts @wanted.map(&:title) unless @wanted.empty?
 
     puts "Dry-run mode enabled.  Nothing else to do!" and return if ENV['DRYRUN']
 
-
+    @wanted.each do |t|
+      torrent = @transmission_api_client.create(t.magnet)
+      puts "Tracking new torrent: #{torrent['name']}"
+    end
   end
 
   # Searches torrents by given search term
@@ -114,11 +117,11 @@ module TorrentialDownpour
       end
     end
 
-    # Skip torrents older than the latest existing episode
+    # Skip torrents older than (or equivalent to) the latest existing episode
     if @only_newer && !existing.empty?
       latest_episode = existing.map { |t| t.title.match(item['pattern'])[:episode] }.last
       sorted.delete_if do |t|
-        if t.title.match(item['pattern'])[:episode] < latest_episode
+        if t.title.match(item['pattern'])[:episode] <= latest_episode
           puts "Skipping torrent older than #{latest_episode}: #{t.title}"
           true
         else

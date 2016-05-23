@@ -100,6 +100,7 @@ $ DRYRUN=1 torrential_downpour start
 
 ## TODO
 
+- Needs extensive testing!
 - Package this as a gem
 - Generalize the torrent search so it searches multiple sources (other than TPB)
 - Improve scheduling options; perhaps each show on it's own schedule
